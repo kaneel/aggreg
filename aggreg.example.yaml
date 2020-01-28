@@ -1,0 +1,9 @@
+limit: 10
+output: ./some/path
+feeds: 
+  - kotaku:
+      url: "https://www.kotaku.co.uk/"
+      selector: "#maincontentlist section:last-child article.media"
+      anchor: ".media__body a"
+      title: ".media__body h2 a"
+      content: ".media__body p"

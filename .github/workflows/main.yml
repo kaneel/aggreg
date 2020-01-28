@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions-rs/cargo@v1.0.1
+      with:
+        command: build
+        args: --release --all-features
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: target/release/aggreg
+      env:
+        GITHUB_TOKEN: ${{ secrets.GT }}
